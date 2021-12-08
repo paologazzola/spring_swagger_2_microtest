@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,9 @@ import it.keuzzolo.microtest.dto.AppDto;
 public class AppController {
 
 	Logger logger = LoggerFactory.getLogger(AppController.class);
+	
+	@Value("${app.version}")
+	private String appVersion;
 
 	@GetMapping("random")
 	public AppDto getRandom() throws SocketException {
@@ -40,7 +44,7 @@ public class AppController {
 		}
 
 		AppDto dto = AppDto.builder().name("test name :-)").date(Calendar.getInstance()).ip(getHost4Address())
-				.hostname(hostname).build();
+				.hostname(hostname).version(appVersion).build();
 		logger.debug("END - getRandom({})", dto);
 		return dto;
 	}

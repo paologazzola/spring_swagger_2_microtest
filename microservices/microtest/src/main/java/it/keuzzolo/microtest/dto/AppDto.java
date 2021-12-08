@@ -16,5 +16,7 @@ public class AppDto {
 	private String ip;
 	
 	private String hostname;
+	
+	private String version;
 
 }
