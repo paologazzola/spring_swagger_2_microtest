@@ -46,6 +46,7 @@ public class AppController {
 		AppDto dto = AppDto.builder().name("test name :-)").date(Calendar.getInstance()).ip(getHost4Address())
 				.hostname(hostname).version(appVersion).build();
 		logger.debug("END - getRandom({})", dto);
+		
 		return dto;
 	}
 	
